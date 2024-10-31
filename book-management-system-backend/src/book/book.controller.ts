@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, UseInterceptors, BadRequestException, UploadedFile } from '@nestjs/common';
 import { BookService } from './book.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
-
+import { FileInterceptor } from '@nestjs/platform-express';
+import { storage } from './my-file-storage';
+import * as path from 'path'
 @Controller('book')
 export class BookController {
   constructor(private readonly bookService: BookService) {}
@@ -15,6 +17,24 @@ export class BookController {
   @Get(':id')
   async findById(@Param('id') id: string) {
     return this.bookService.findById(+id);
+  }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('myfile', {
+    storage,
+    limits: { fileSize: 50 * 1024 * 1024 }, // 50MB
+    fileFilter(req, file, callback) {
+      const extName = path.extname(file.originalname);
+      if(['.png', '.jpg', '.gif'].includes(extName)) {
+        callback(null, true);
+      } else {
+        callback(new BadRequestException('只能上传图片'), false);
+      }
+    },
+  }))
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    console.log(file);
+    return 'success';
   }
 
   @Post('create')
