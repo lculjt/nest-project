@@ -1,16 +1,1 @@
-[
-    {
-        "id": 894545,
-        "name": "红楼梦",
-        "author": "曹雪芹",
-        "description": "大观园",
-        "cover": "清朝雍正封面"
-    },
-    {
-        "id": 423762,
-        "name": "西游记",
-        "author": "吴承恩",
-        "description": "四人行",
-        "cover": "你不放行，我就去找你"
-    }
-]
+[{"id":894545,"name":"红楼梦","author":"曹雪芹","description":"大观园","cover":"uploads/1733472694310-login_bg.png"},{"id":423762,"name":"西游记","author":"吴承恩","description":"四人","cover":"uploads/1733472682814-Icon-5.png"},{"id":905634,"name":"丰乳肥","author":"莫言","description":"没看过","cover":"uploads/1733472712028-Icon-4.png"}]

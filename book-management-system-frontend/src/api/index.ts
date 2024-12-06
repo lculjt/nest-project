@@ -18,6 +18,40 @@ export async function login(username: string, password: string) {
     });
 }
 
-export async function list() {
-    return await axiosInstance.get('/book/list');
+export async function list(name: string) {
+    return await axiosInstance.get('/book/list', { 
+        params: {
+            name
+        }
+    });
 }
+
+export async function create(book: any) {
+    return await axiosInstance.post('/book/create', {
+        name: book.name,
+        author: book.author,
+        description: book.description,
+        cover: book.cover
+    });
+}
+
+export async function detail(id: number) {
+    return await axiosInstance.get(`/book/${id}`);
+}
+
+export async function update(book: any) {
+    return await axiosInstance.put('/book/update', {
+        id: book.id,
+        name: book.name,
+        author: book.author,
+        description: book.description,
+        cover: book.cover
+    });
+}
+
+export async function deleteBook(id: number) {
+    return await axiosInstance.delete(`/book/delete/${id}`);
+}
+
+
+
