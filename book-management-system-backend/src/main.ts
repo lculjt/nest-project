@@ -9,7 +9,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ transform: true})); // Add this line to enable validation for all controllers and guards
   
   app.useStaticAssets(join(__dirname, '../uploads'), { 
-    prefix: '/public',
+    prefix: '/uploads', // /uploads/xxx.png
   });
   await app.listen(process.env.PORT ?? 3000);
 }
