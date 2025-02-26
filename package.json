@@ -2,14 +2,7 @@
   "name": "nest-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "re": "sh re_install.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "workspaces": [
-    "nest/*"
-  ],
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
