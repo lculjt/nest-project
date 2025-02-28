@@ -39,6 +39,21 @@ export class AppController {
     }
   }
 
+  @Get('github/login')
+  @IsPublic()
+  @UseGuards(AuthGuard('github'))
+  githubLogin() {
+
+  }
+
+  @Get('callback')
+  @IsPublic()
+  @UseGuards(AuthGuard('github'))
+  async authCallback(@Req() req) {
+    console.log(req.user);
+    return req.user;
+  }
+
   @UseGuards(AuthGuard('jwt'))
   @Get("list")
   list(@Req() req: Request) {
