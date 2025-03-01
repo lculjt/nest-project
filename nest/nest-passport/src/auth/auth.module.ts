@@ -4,8 +4,9 @@ import { LocalStrategy } from './local.strategy';
 import { UserModule } from '../user/user.module';
 import { JwtStrategy } from './jwt.strategy';
 import { GitHubStrategy } from './github.strategy';
+import { GoogleStrategy } from './google.strategy';
 @Module({
   imports: [UserModule],
-  providers: [AuthService, LocalStrategy, JwtStrategy, GitHubStrategy]
+  providers: [AuthService, LocalStrategy, JwtStrategy, GitHubStrategy, GoogleStrategy]
 })
 export class AuthModule { }

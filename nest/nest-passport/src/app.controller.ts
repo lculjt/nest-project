@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Req, UseGuards, Inject } from '@nestjs/common';
+import { Controller, Get, Post, Req, UseGuards, Inject, Redirect } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
@@ -52,6 +52,26 @@ export class AppController {
   async authCallback(@Req() req) {
     console.log(req.user);
     return req.user;
+  }
+
+  @Get('google')
+  @IsPublic()
+  @UseGuards(AuthGuard('google'))
+  async googleAuth() { }
+
+  @Get('callback/google')
+  @UseGuards(AuthGuard('google'))
+  @Redirect('/aaa')
+  @IsPublic()
+  googleAuthRedirect(@Req() req) {
+    if (!req.user) {
+      return 'No user from google'
+    }
+
+    return {
+      message: 'User information from google',
+      user: req.user
+    }
   }
 
   @UseGuards(AuthGuard('jwt'))
