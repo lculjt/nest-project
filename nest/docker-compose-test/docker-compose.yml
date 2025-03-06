@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   nest-app:
     build: 
@@ -8,18 +9,23 @@ services:
       - redis-container
     ports: 
       - '3000:3000'
+    networks:
+      - common-networks
   mysql-container:
     image: mysql
-    ports:
-      - '3306:3306'
     volumes:
       - /Users/v_lijianting/projects/docker-data/mysql
     environment:
       - MYSQL_DATABASE=aaa
       - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - common-networks
   redis-container:
     image: redis
-    ports:
-      - '6370:6379'
     volumes:
       - /Users/v_lijianting/projects/docker-data/redis-test
+    networks:
+      - common-networks
+networks:
+  common-networks:
+    driver: bridge
