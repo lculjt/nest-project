@@ -18,7 +18,7 @@
                 "<node_internals>/**"
             ],
             "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}/nest/schedule-task"
+            "cwd": "${workspaceFolder}/nest/request-log"
         }
     ]
 }
